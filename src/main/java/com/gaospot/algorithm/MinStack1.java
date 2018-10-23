@@ -3,12 +3,13 @@ package com.gaospot.algorithm;
 import java.util.Stack;
 
 /**
+ * 实现查找最小数的算法，算法复杂度O（1）
  * Created by gao on 2018/10/8.
  */
-public class MinStack {
+public class MinStack1 {
     private Stack<Integer> stackData;
     private Stack<Integer> stackMin;
-    public MinStack() {
+    public MinStack1() {
         this.stackData = new Stack<>();
         this.stackMin = new Stack<>();
     }
@@ -36,5 +37,15 @@ public class MinStack {
             throw new RuntimeException("no value in the stack");
 
         return this.stackMin.peek();
+    }
+
+    public static void main(String[] args) {
+        MinStack1 mStack1 = new MinStack1();
+        mStack1.push(3);
+        mStack1.push(2);
+        mStack1.push(4);
+        mStack1.push(1);
+        mStack1.push(5);
+        System.out.println("min= " +mStack1.getmin());
     }
 }

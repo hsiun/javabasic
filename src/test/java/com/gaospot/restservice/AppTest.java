@@ -1,4 +1,4 @@
-package com.gaospot;
+package com.gaospot.restservice;
 
 import static org.junit.Assert.assertTrue;
 
