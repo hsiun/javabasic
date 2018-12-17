@@ -137,6 +137,31 @@ public class FilesMonitor implements Runnable {
         return files;
     }
 
+    
+    
+    /**
+     * 匹配规则为pattern且日期大于date的文件
+     *
+     * @param logLocation 需要匹配文件夹的路径
+     * @param pattern     匹配模式
+     * @param date        需要大于的日期
+     * @return
+     * @throws ParseException
+     */
+    public static String[] getCsvFiles(String logLocation, final String pattern, String date) throws ParseException {
+        File logDirectory = new File(logLocation);
+        String[] files = new String[]{};
+
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+        Date d = f.parse(date);
+        long milliseconds = d.getTime();
+
+
+        if (logDirectory.isDirectory()) {
+            files = logDirectory.list((x, y) -> y.matches(pattern) && new File(x, y).lastModified() >= milliseconds);
+        }
+        return files;
+    }
 
     // 启动线程
     public void show() {
