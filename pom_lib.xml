@@ -29,6 +29,7 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.11</version>
+            <scope>test</scope>
         </dependency>
 
         <dependency>
@@ -78,68 +79,36 @@
     </dependencies>
 
 
+
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.1</version>
-                <configuration>
-                    <compilerVersion>1.7</compilerVersion>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                </configuration>
-            </plugin>
-            <!-- The configuration of maven-jar-plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
-                <!-- The configuration of the plugin -->
                 <configuration>
-                    <!-- Configuration of the archiver -->
                     <archive>
-
-                        <!-- do not include pom.xml and pom.properties in the jar package -->
-                        <addMavenDescriptor>false</addMavenDescriptor>
-
-                        <!-- Manifest specific configuration -->
                         <manifest>
-
-                            <!-- put third party jar package into the classpath of manifest -->
                             <addClasspath>true</addClasspath>
-                            <!-- the prefix of the jar items in the classpath, it depends on the location(folder) of jar files -->
-                            <classpathPrefix>lib/</classpathPrefix>
-                            <!-- main class of the jar package-->
+                            <classpathPrefix>lib</classpathPrefix>
                             <mainClass>com.gaospot.utils.SFTPUtil</mainClass>
                         </manifest>
                     </archive>
-                    <!-- excludes some files -->
-                    <excludes>
-                        <exclude>${project.basedir}/xml/*</exclude>
-                    </excludes>
                 </configuration>
             </plugin>
 
-            <!-- The configuration of maven-assembly-plugin -->
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
-                <!-- The configuration of the plugin -->
-                <configuration>
-                    <!-- Specifies the configuration file of the assembly plugin -->
-                    <descriptors>
-                        <descriptor>src/main/resources/package.xml</descriptor>
-                    </descriptors>
-                </configuration>
+                <artifactId>maven-dependency-plugin</artifactId>
                 <executions>
                     <execution>
-                        <id>make-assembly</id>
+                        <id>copy</id>
                         <phase>package</phase>
                         <goals>
-                            <goal>single</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+
                     </execution>
                 </executions>
             </plugin>

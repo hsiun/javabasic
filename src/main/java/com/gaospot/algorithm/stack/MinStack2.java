@@ -1,4 +1,4 @@
-package com.gaospot.algorithm;
+package com.gaospot.algorithm.stack;
 
 import java.util.Stack;
 
