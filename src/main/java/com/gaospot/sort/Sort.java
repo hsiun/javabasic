@@ -10,6 +10,28 @@ public class Sort {
 
 
     /**
+     * 冒泡排序我觉得是真简单
+     * 每一次比较临近的两个元素
+     * 把大的元素放在后面，一轮过后最大的元素就到了序列的最后面。
+     *
+     * @param a
+     */
+    public void bubbleSort(int[] a) {
+        int length = a.length;
+        for(int i=0; i<length; i++) {
+            for(int j=0; j< length - i-1; j++) {
+                if (a[j] > a[j+1]) {
+                    int temp = a[j];
+                    a[j] = a[j+1];
+                    a[j+1] = temp;
+                }
+            }
+        }
+
+    }
+
+
+    /**
      * 简单选择排序也比较简单。
      * 在前面的n个数中查找最小的那个数放在当前位置
      * 在剩下的数中找最小的那个数放在当前位置

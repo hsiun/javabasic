@@ -28,7 +28,11 @@ public class TestSort {
         System.out.println("排序前的数组为：" + Arrays.toString(a));
         int[] select = Arrays.copyOf(a, a.length);
         sort.selectSort(select);
-        System.out.println("插入排序后的数组为：" + Arrays.toString(select));
+        System.out.println("选择排序后的数组为：" + Arrays.toString(select));
 
+        System.out.println("排序前的数组为：" + Arrays.toString(a));
+        int[] bubble = Arrays.copyOf(a, a.length);
+        sort.bubbleSort(bubble);
+        System.out.println("冒泡排序后的数组为：" + Arrays.toString(bubble));
     }
 }
