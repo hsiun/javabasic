@@ -1,7 +1,6 @@
 package com.gaospot.sort;
 
 import java.util.Arrays;
-import java.util.Random;
 
 /**
  * @author: gaoxiong@asiainfo.com
